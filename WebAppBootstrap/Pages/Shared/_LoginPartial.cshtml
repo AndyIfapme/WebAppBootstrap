@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+    <!-- Color mode -->
+    <li class="nav-item dropdown">
+        <a id="bd-theme"
+           class="nav-link dropdown-toggle"
+           role="button"
+           aria-expanded="false"
+           data-bs-toggle="dropdown"
+           data-bs-display="static">
+            <svg class="bi my-1 me-2 theme-icon-active">
+                <use href="#circle-half"></use>
+            </svg>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="bd-theme"
+            style="--bs-dropdown-min-width: 8rem;">
+            <li>
+                <button type="button"
+                        class="dropdown-item d-flex align-items-center"
+                        data-bs-theme-value="light">
+                    <svg class="bi me-2 opacity-50 theme-icon">
+                        <use href="#sun-fill"></use>
+                    </svg>
+                    &nbsp;Light
+                    <svg class="bi ms-auto d-none">
+                        <use href="#check2"></use>
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <button type="button"
+                        class="dropdown-item d-flex align-items-center"
+                        data-bs-theme-value="dark">
+                    <svg class="bi me-2 opacity-50 theme-icon">
+                        <use href="#moon-stars-fill"></use>
+                    </svg>
+                    &nbsp;Dark
+                    <svg class="bi ms-auto d-none">
+                        <use href="#check2"></use>
+                    </svg>
+                </button>
+            </li>
+            <li>
+                <button type="button"
+                        class="dropdown-item d-flex align-items-center active"
+                        data-bs-theme-value="auto">
+                    <svg class="bi me-2 opacity-50 theme-icon">
+                        <use href="#circle-half"></use>
+                    </svg>
+                    &nbsp;Auto
+                    <svg class="bi ms-auto d-none">
+                        <use href="#check2"></use>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+    </li>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="nav-link btn btn-link">Logout</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>
