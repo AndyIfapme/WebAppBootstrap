@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WebAppBootstrap.Data;
+using System.Diagnostics;
+using WebAppBootstrap.Infrastructure;
 
 namespace WebAppBootstrap
 {
@@ -21,6 +22,7 @@ namespace WebAppBootstrap
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
+            ResetDatabase(app.Services);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -44,6 +46,25 @@ namespace WebAppBootstrap
             app.MapRazorPages();
 
             app.Run();
+        }
+
+        [Conditional("RESETDB")]
+        static void ResetDatabase(IServiceProvider serviceProvider)
+        {
+            using var scope = serviceProvider.CreateScope();
+            var services = scope.ServiceProvider;
+
+            try
+            {
+                var dbContext = services.GetRequiredService<ApplicationDbContext>();
+                DbInitializer.Initialize(dbContext);
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+
+                logger.LogError(ex, "An error occurred while seeding the database.");
+            }
         }
     }
 }

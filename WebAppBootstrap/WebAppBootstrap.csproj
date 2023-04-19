@@ -7,6 +7,10 @@
     <UserSecretsId>aspnet-WebAppBootstrap-3f9a6011-3350-4bfe-a1b7-18f787ed095f</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);RESETDB</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Remove="C:\Users\abi\.nuget\packages\bootstrap\5.3.0-alpha3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js" />
     <Content Remove="C:\Users\abi\.nuget\packages\bootstrap\5.3.0-alpha3\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js.map" />
@@ -23,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="bootstrap" Version="5.3.0-alpha3" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
@@ -32,6 +35,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebAppBootstrap.Application\WebAppBootstrap.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>
