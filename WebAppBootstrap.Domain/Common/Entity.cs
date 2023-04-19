@@ -1,4 +1,4 @@
-﻿namespace WebAppBootstrap.Domain.Domain;
+﻿namespace WebAppBootstrap.Domain.Common;
 
 public class Entity
 {
