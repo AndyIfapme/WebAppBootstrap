@@ -15,8 +15,8 @@ namespace WebAppBootstrap.Infrastructure
             //Appel automatiquement les configurations héritant de IEntityTypeConfiguration dans l'assembly défini.
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
-            //builder.ApplyConfiguration(new VinylConfiguration());
-            //builder.ApplyConfiguration(new ArtistConfiguration());
+            //builder.ApplyConfiguration(new BrandConfiguration());
+            //builder.ApplyConfiguration(new ItemConfiguration());
 
             base.OnModelCreating(builder);
         }
