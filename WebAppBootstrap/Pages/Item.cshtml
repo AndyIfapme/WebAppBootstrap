@@ -1,0 +1,24 @@
+﻿@page "{id:Guid}"
+@model WebAppBootstrap.Pages.ItemModel
+@{
+}
+
+
+@if (Model.Item is null /* == null */)
+{
+    <p>Cette article n'est plus disponible.</p>
+}
+else
+{
+    <div class="d-flex">
+        <div class="p-2 flex-grow-1">
+            <p class="h1">@Model.Item.Name</p>
+            <p>@Model.Item.Description</p>
+            <p>@Model.Item.BrandName</p>
+        </div>
+        <div class="p-2">
+            <span class="badge rounded-pill text-bg-primary">@Model.Item.Price €</span>
+
+        </div>
+    </div>
+}

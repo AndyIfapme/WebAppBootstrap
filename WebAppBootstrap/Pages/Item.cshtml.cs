@@ -1,43 +1,50 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebAppBootstrap.Domain.Items;
 using WebAppBootstrap.Infrastructure;
 
 namespace WebAppBootstrap.Pages
 {
-    public class IndexModel : PageModel
+    public class ItemModel : PageModel
     {
         private readonly ApplicationDbContext _applicationDbContext;
+        public ItemView? Item { get; set; }
 
-        public List<ItemView> Items { get; set; }
-
-        public IndexModel(ApplicationDbContext applicationDbContext)
+        public ItemModel(ApplicationDbContext applicationDbContext)
         {
             _applicationDbContext = applicationDbContext;
         }
 
-        public void OnGet()
+        //https://learn.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-7.0&tabs=visual-studio#the-editcshtml-file
+        public void OnGet(Guid id)
         {
-            Items = _applicationDbContext.Set<Item>()
+            Item = _applicationDbContext.Set<Item>()
+                .Where(x => x.Id == id)
                 .Select(item => new ItemView
                 {
                     ItemId = item.Id,
+
                     Name = item.Name,
+                    Description = item.Description,
                     Price = item.Price,
+
+                    BrandId = item.BrandId,
                     BrandName = item.Brand.Name
                 })
-            .ToList();
+                .SingleOrDefault();
         }
 
-        /*
-        * dto (Data transfert object) permet de mettre le plus 'flat' possible les données pour le rendu HTML.
-        * Le FE n'a pas besoin de savoir l'existence d'autres données que ceux qui doit utiliser
-        * et évite d'avoir des structures trop complexe.
-        */
         public class ItemView
         {
             public Guid ItemId { get; set; }
+
             public string Name { get; set; } = default!;
+
+            public string Description { get; set; } = default!;
+
             public double Price { get; set; }
+
+            public Guid BrandId { get; set; }
 
             public string BrandName { get; set; } = default!;
         }

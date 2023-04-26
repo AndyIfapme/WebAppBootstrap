@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{953A362B-403
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "business", "business", "{F9D17083-5B8A-45CC-B728-18A925D3831A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppBootstrap.Infrastructure", "WebAppBootstrap.Infrastructure\WebAppBootstrap.Infrastructure.csproj", "{A72A6BCF-757C-4345-82AA-7735A0B90E97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppBootstrap.Infrastructure", "WebAppBootstrap.Infrastructure\WebAppBootstrap.Infrastructure.csproj", "{A72A6BCF-757C-4345-82AA-7735A0B90E97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppBootstrap.Domain", "WebAppBootstrap.Domain\WebAppBootstrap.Domain.csproj", "{19E433C5-4D4C-4DA0-97D7-03A41476A505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppBootstrap.Domain", "WebAppBootstrap.Domain\WebAppBootstrap.Domain.csproj", "{19E433C5-4D4C-4DA0-97D7-03A41476A505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppBootstrap.Application", "WebAppBootstrap.Application\WebAppBootstrap.Application.csproj", "{CC5FB716-E959-498D-8DFC-3D16059A176D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppBootstrap.Application", "WebAppBootstrap.Application\WebAppBootstrap.Application.csproj", "{CC5FB716-E959-498D-8DFC-3D16059A176D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
