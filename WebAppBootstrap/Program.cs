@@ -24,7 +24,7 @@ namespace WebAppBootstrap
 
             builder.Services.AddRazorPages();
 
-            var app = builder.Build();
+            var app = builder.Build();  
             ResetDatabase(app.Services);
 
             // Configure the HTTP request pipeline.
