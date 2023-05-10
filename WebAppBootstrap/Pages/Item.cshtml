@@ -1,6 +1,20 @@
 ﻿@page "{id:Guid}"
 @model WebAppBootstrap.Pages.ItemModel
 @{
+    var defaultImage = "/imgs/items/default-image.png";
+    var imageUrl = Model.Item!.ImageUrl ?? defaultImage;
+
+    //if (Model.Item!.ImageUrl == null)
+    //{
+    //    imageUrl = defaultImage;
+    //}
+    //else
+    //{
+    //    imageUrl = Model.Item!.ImageUrl;
+    //}
+
+
+    //imageUrl = Model.Item!.ImageUrl == null ? defaultImage : Model.Item!.ImageUrl;
 }
 
 
@@ -15,6 +29,8 @@ else
             <p class="h1">@Model.Item.Name</p>
             <p>@Model.Item.Description</p>
             <p>@Model.Item.BrandName</p>
+
+            <img src="@imageUrl" alt="" loading="lazy">
         </div>
         <div class="p-2">
             <span class="badge rounded-pill text-bg-primary">@Model.Item.Price €</span>

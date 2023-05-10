@@ -42,7 +42,8 @@ public static class DbInitializer
                 {
                     Name = "Jordan",
                     Description = "jordan edition limité  2022",
-                    Price = 800.00
+                    Price = 800.00,
+                    ImageUrl = "/imgs/items/nike-jordan.webp"
                 }
             }
         });

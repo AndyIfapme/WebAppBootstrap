@@ -1,14 +1,25 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebAppBootstrap.Domain.Items;
 
 namespace WebAppBootstrap.Infrastructure
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        public DbSet<Brand> Brand { get; set; }
+        public DbSet<Item> Item { get; set; }
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
+        //https://learn.microsoft.com/en-us/ef/core/cli/dbcontext-creation?tabs=dotnet-core-cli
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=(localdb)\\mssqllocaldb;Database=aspnet-WebAppBootstrapDone-53bc9b9d-9d6a-45d4-8429-2a2761773502;Trusted_Connection=True;MultipleActiveResultSets=true");
+        //}
 
         /*
          *La méthode OnModelCreating est une méthode fournie par Entity Framework Core qui est appelée
@@ -18,7 +29,6 @@ namespace WebAppBootstrap.Infrastructure
          * les index, les clés étrangères, etc. avant qu'Entity Framework Core ne crée
          * le schéma de base de données.
          */
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             /*

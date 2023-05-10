@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using WebAppBootstrap.Domain.Items;
 using WebAppBootstrap.Infrastructure;
 
 namespace WebAppBootstrap.Pages
@@ -18,7 +16,7 @@ namespace WebAppBootstrap.Pages
         //https://learn.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-7.0&tabs=visual-studio#the-editcshtml-file
         public void OnGet(Guid id)
         {
-            Item = _applicationDbContext.Set<Item>()
+            Item = _applicationDbContext.Item
                 .Where(x => x.Id == id)
                 .Select(item => new ItemView
                 {
@@ -27,6 +25,7 @@ namespace WebAppBootstrap.Pages
                     Name = item.Name,
                     Description = item.Description,
                     Price = item.Price,
+                    ImageUrl = item.ImageUrl,
 
                     BrandId = item.BrandId,
                     BrandName = item.Brand.Name
@@ -43,6 +42,8 @@ namespace WebAppBootstrap.Pages
             public string Description { get; set; } = default!;
 
             public double Price { get; set; }
+            public string? ImageUrl { get; set; }
+
 
             public Guid BrandId { get; set; }
 

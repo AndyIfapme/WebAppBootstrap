@@ -10,6 +10,8 @@ public class Item : Entity
 
     public double Price { get; set; }
 
-    public Brand Brand { get; set; }
+    public string? ImageUrl { get; set; }
+
+    public Brand? Brand { get; set; }/* = default!;*/
     public Guid BrandId { get; set; }
 }   
