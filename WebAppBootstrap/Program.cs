@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using WebAppBootstrap.Domain.Users;
 using WebAppBootstrap.Infrastructure;
 
 namespace WebAppBootstrap
@@ -19,7 +20,12 @@ namespace WebAppBootstrap
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<User>(options =>
+                {
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.Password.RequireDigit = true;
+                    options.Password.RequiredLength = 12;
+                })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddRazorPages();

@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebAppBootstrap.Domain.Items;
+using WebAppBootstrap.Domain.Users;
 
 namespace WebAppBootstrap.Infrastructure
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Item> Item { get; set; }
+        public DbSet<InvoiceAddress> InvoiceAddress { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
