@@ -5,6 +5,10 @@ using WebAppBootstrap.Domain.Users;
 
 namespace WebAppBootstrap.Infrastructure
 {
+
+    //dotnet ef migrations add "Initial" -s "WebAppBootstrap/WebAppBootstrap.csproj" -p WebAppBootstrap.Infrastructure -o "Migrations" -c ApplicationDbContext
+    //dotnet ef migrations script --idempotent -o "WebAppBootstrap.Infrastructure/Scripts/idempotent.sql" -s "WebAppBootstrap/WebAppBootstrap.csproj" -p WebAppBootstrap.Infrastructure -c ApplicationDbContext
+
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public DbSet<Brand> Brand { get; set; }

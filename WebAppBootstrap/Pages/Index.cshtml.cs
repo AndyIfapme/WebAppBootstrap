@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using WebAppBootstrap.Domain.Items;
 using WebAppBootstrap.Infrastructure;
 
@@ -25,7 +26,7 @@ namespace WebAppBootstrap.Pages
                     Price = item.Price,
                     BrandName = item.Brand.Name
                 })
-            .ToList();
+                .ToList();
         }
 
         /*
