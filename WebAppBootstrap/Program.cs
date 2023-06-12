@@ -28,6 +28,7 @@ namespace WebAppBootstrap
                     options.Password.RequireDigit = true;
                     options.Password.RequiredLength = 12;
                 })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddRazorPages();
@@ -77,7 +78,10 @@ namespace WebAppBootstrap
             try
             {
                 var dbContext = services.GetRequiredService<ApplicationDbContext>();
-                DbInitializer.Initialize(dbContext);
+                var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                var userManager = services.GetRequiredService<UserManager<User>>();
+
+                DbInitializer.Initialize(dbContext, userManager, roleManager);
             }
             catch (Exception ex)
             {
